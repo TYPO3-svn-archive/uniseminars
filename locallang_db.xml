@@ -46,6 +46,7 @@
 			<label index="tx_uniseminars_department">Departments</label>
 			<label index="tx_uniseminars_department.name">name</label>
 			<label index="tx_uniseminars_department.description">Description</label>
+			<label index="tt_content.list_type_pi1">Uni-Seminars</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="tx_uniseminars_courses">Veranstaltungen</label>
@@ -88,6 +89,7 @@
 			<label index="tx_uniseminars_department">Institute</label>
 			<label index="tx_uniseminars_department.name">Name</label>
 			<label index="tx_uniseminars_department.description">Beschreibung</label>
+			<label index="tt_content.list_type_pi1">Uni-Seminare</label>
 		</languageKey>
 	</data>
 </T3locallang>

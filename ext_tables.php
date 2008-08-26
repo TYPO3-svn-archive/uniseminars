@@ -49,4 +49,18 @@ $TCA["tx_uniseminars_department"] = array (
 		"fe_admin_fieldList" => "sys_language_uid, l18n_parent, l18n_diffsource, hidden, fe_group, name, description",
 	)
 );
+
+
+t3lib_div::loadTCA('tt_content');
+$TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY.'_mvc1']='layout,select_key,pages,recursive';
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY.'_mvc1']='pi_flexform';
+
+
+t3lib_extMgm::addStaticFile('uniseminars', './configurations/mvc1', 'Uni-Seminars');
+
+
+t3lib_extMgm::addPiFlexFormValue($_EXTKEY.'_mvc1', 'FILE:EXT:uniseminars/configurations/mvc1/flexform.xml');
+
+
+t3lib_extMgm::addPlugin(array('LLL:EXT:uniseminars/locallang_db.xml:tt_content.list_type_pi1', $_EXTKEY.'_mvc1'),'list_type');
 ?>

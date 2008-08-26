@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'uniseminars'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_uniseminars_courses">Courses</label>
+			<label index="tx_uniseminars_courses.title">Title</label>
+			<label index="tx_uniseminars_courses.type.I.0">Master</label>
+			<label index="tx_uniseminars_courses.type.I.1">PhD</label>
+			<label index="tx_uniseminars_courses.type">Type</label>
+			<label index="tx_uniseminars_courses.department">Department</label>
+			<label index="tx_uniseminars_courses.coursetype.I.0">Lecture course</label>
+			<label index="tx_uniseminars_courses.coursetype.I.1">Lecture course with exercises</label>
+			<label index="tx_uniseminars_courses.coursetype.I.2">Lecture course with practical</label>
+			<label index="tx_uniseminars_courses.coursetype.I.3">Practical course</label>
+			<label index="tx_uniseminars_courses.coursetype.I.4">Student Seminar</label>
+			<label index="tx_uniseminars_courses.coursetype.I.5">Tutorial</label>
+			<label index="tx_uniseminars_courses.coursetype.I.6">Journal Club</label>
+			<label index="tx_uniseminars_courses.coursetype.I.7">Laboratory Rotation</label>
+			<label index="tx_uniseminars_courses.coursetype.I.8">Lab visit</label>
+			<label index="tx_uniseminars_courses.coursetype">Course-Type</label>
+			<label index="tx_uniseminars_courses.semester.I.0">Summer Term</label>
+			<label index="tx_uniseminars_courses.semester.I.1">Winter Term</label>
+			<label index="tx_uniseminars_courses.semester">Semester</label>
+			<label index="tx_uniseminars_courses.year">Year</label>
+			<label index="tx_uniseminars_courses.lecturer">Lecturer</label>
+			<label index="tx_uniseminars_courses.credits">Credits</label>
+			<label index="tx_uniseminars_courses.objective">Objective</label>
+			<label index="tx_uniseminars_courses.targets">Learning Targets</label>
+			<label index="tx_uniseminars_courses.prerequisites">Prerequisites</label>
+			<label index="tx_uniseminars_courses.reading">Reading</label>
+			<label index="tx_uniseminars_courses.datelocation">Date, Time &amp; Location</label>
+			<label index="tx_uniseminars_courses.start">Start-Date</label>
+			<label index="tx_uniseminars_courses.grading">Grading</label>
+			<label index="tx_uniseminars_courses.examdate">Exam-Date</label>
+			<label index="tx_uniseminars_courses.closed.I.0">Open</label>
+			<label index="tx_uniseminars_courses.closed.I.1">No guests</label>
+			<label index="tx_uniseminars_courses.closed.I.2">registration expired</label>
+			<label index="tx_uniseminars_courses.closed.I.3">Full</label>
+			<label index="tx_uniseminars_courses.closed">Open or Closed for guests</label>
+			<label index="tx_uniseminars_courses.contact">Contact</label>
+			<label index="tx_uniseminars_courses.email">E-Mail</label>
+			<label index="tx_uniseminars_department">Departments</label>
+			<label index="tx_uniseminars_department.name">name</label>
+			<label index="tx_uniseminars_department.description">Description</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tx_uniseminars_courses">Veranstaltungen</label>
+			<label index="tx_uniseminars_courses.title">Titel</label>
+			<label index="tx_uniseminars_courses.type.I.0">Master</label>
+			<label index="tx_uniseminars_courses.type.I.1">PhD</label>
+			<label index="tx_uniseminars_courses.type">Typ</label>
+			<label index="tx_uniseminars_courses.department">Institut</label>
+			<label index="tx_uniseminars_courses.coursetype.I.0">Lecture course</label>
+			<label index="tx_uniseminars_courses.coursetype.I.1">Lecture course with exercises</label>
+			<label index="tx_uniseminars_courses.coursetype.I.2">Lecture course with practical</label>
+			<label index="tx_uniseminars_courses.coursetype.I.3">Practical course</label>
+			<label index="tx_uniseminars_courses.coursetype.I.4">Student Seminar</label>
+			<label index="tx_uniseminars_courses.coursetype.I.5">Tutorial</label>
+			<label index="tx_uniseminars_courses.coursetype.I.6">Journal Club</label>
+			<label index="tx_uniseminars_courses.coursetype.I.7">Laboratory Rotation</label>
+			<label index="tx_uniseminars_courses.coursetype.I.8">Lab visit</label>
+			<label index="tx_uniseminars_courses.coursetype">Kurs-Typ</label>
+			<label index="tx_uniseminars_courses.semester.I.0">Sommer-Semester</label>
+			<label index="tx_uniseminars_courses.semester.I.1">Winter-Semester</label>
+			<label index="tx_uniseminars_courses.semester">Semester</label>
+			<label index="tx_uniseminars_courses.year">Jahr</label>
+			<label index="tx_uniseminars_courses.lecturer">Dozent</label>
+			<label index="tx_uniseminars_courses.credits">Punkte</label>
+			<label index="tx_uniseminars_courses.objective">Objective</label>
+			<label index="tx_uniseminars_courses.targets">Lernziel</label>
+			<label index="tx_uniseminars_courses.prerequisites">Voraussetzungen</label>
+			<label index="tx_uniseminars_courses.reading">Zu lesen</label>
+			<label index="tx_uniseminars_courses.datelocation">Zeit und Ort</label>
+			<label index="tx_uniseminars_courses.start">Start-Datum</label>
+			<label index="tx_uniseminars_courses.grading">Prüfung</label>
+			<label index="tx_uniseminars_courses.examdate">Prüfungsdatum</label>
+			<label index="tx_uniseminars_courses.closed.I.0">Offen</label>
+			<label index="tx_uniseminars_courses.closed.I.1">Keine Gasthörer</label>
+			<label index="tx_uniseminars_courses.closed.I.2">Anmeldungsfrist abgelaufen</label>
+			<label index="tx_uniseminars_courses.closed.I.3">Voll</label>
+			<label index="tx_uniseminars_courses.closed">Offen für Gasthörer</label>
+			<label index="tx_uniseminars_courses.contact">Kontakt</label>
+			<label index="tx_uniseminars_courses.email">E-Mail</label>
+			<label index="tx_uniseminars_department">Institute</label>
+			<label index="tx_uniseminars_department.name">Name</label>
+			<label index="tx_uniseminars_department.description">Beschreibung</label>
+		</languageKey>
+	</data>
+</T3locallang>

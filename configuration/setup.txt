@@ -1,0 +1,59 @@
+// setting the configurations
+plugin.tx_uniseminars.configurations {
+	pathToTemplateDirectory = EXT:uniseminars/templates/
+	pathToLanguageFile = EXT:uniseminars/locallang.xml
+	pathToIcons = fileadmin/img/
+	courseListTemplate = courseList.php
+	courseDetailTemplate = courseDetails.php
+	detailPageID =
+	listPageID = 
+    formTemplate = registerFormTpl.php
+	captchaTemplate = registerCaptchaTpl.php
+	previewTemplate = registerPreviewTpl.php
+	validationRules {
+		10 {
+			field = firstname
+			pattern = /.+/
+			message = %%%emptyFirstnameError%%%
+		}
+		20 {
+			field = lastname
+			pattern = /.+/
+			message = %%%emptyLastnameError%%%
+		}
+        30 {
+			field = email
+			pattern = /.+/
+			message = %%%emptyEmailError%%%
+		}
+		40 {
+			field = email
+			pattern = /.+@.+\..+|^$/
+			message = %%%invalidEmailError%%%
+		}
+	}
+}
+
+// We don't want to cache during development, we set it to USER later.
+//*** List-View ***
+plugin.tx_uniseminars_controllers_example = USER_INT
+plugin.tx_uniseminars_controllers_example < plugin.tx_uniseminars.configurations
+plugin.tx_uniseminars_controllers_example.userFunc = tx_uniseminars_controllers_example->main
+tt_content.list.20.tx_uniseminars_controllers_example =< plugin.tx_uniseminars_controllers_example
+
+
+//*** Detail-View ***
+plugin.tx_uniseminars_controllers_details = USER_INT
+plugin.tx_uniseminars_controllers_details < plugin.tx_uniseminars.configurations
+plugin.tx_uniseminars_controllers_details.userFunc = tx_uniseminars_controllers_details->main
+tt_content.list.20.tx_uniseminars_controllers_details =< plugin.tx_uniseminars_controllers_details
+
+//*** Register-Form View ***
+plugin.tx_uniseminars_controllers_register = USER_INT
+plugin.tx_uniseminars_controllers_register < plugin.tx_uniseminars.configurations
+plugin.tx_uniseminars_controllers_register.userFunc = tx_uniseminars_controllers_register->main
+tt_content.list.20.tx_uniseminars_controllers_register =< plugin.tx_uniseminars_controllers_register
+
+
+
+

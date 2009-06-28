@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<mainSheet>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:uniseminars/locallang_db.xml:flexform.mainSheetTitle</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<guestFolder>
+						<TCEforms>
+							<label>LLL:EXT:uniseminars/locallang_db.xml:flexform.guestFolderSelection</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>1</minitems>
+								<show_thumbs>1</show_thumbs>
+							</config>
+						</TCEforms>
+					</guestFolder>
+					<redirectRegisterPID>
+						<TCEforms>
+							<label>LLL:EXT:uniseminars/locallang_db.xml:flexform.redirectRegisterPID</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>1</minitems>
+								<show_thumbs>1</show_thumbs>
+							</config>
+						</TCEforms>
+					</redirectRegisterPID>
+				</el>
+			</ROOT>
+		</mainSheet>
+	</sheets>
+</T3DataStructure>

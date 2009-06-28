@@ -1,5 +1,54 @@
-(add new changes on top of this file)
+07-11-30 Elmar Hinz  <elmar.hinz@team-red.net>
 
-08-08-26 Sven Kalbhenn  <sven@skom.de>
+	* Version 0.1.2.
+	* Compatibility to lib 0.1.0 (Milestone -1alphpa) 
 
+07-08-05 Elmar Hinz  <elmar.hinz@team-red.net>
+
+	* Version 0.1.1.
+	* Compatibility to lib 0.0.24 (Milestone -2alphpa) 
+
+07-07-22 Elmar Hinz  <elmar.hinz@team-red.net>
+
+	* Version 0.1.0
+	* Documentation
+
+07-07-14 Elmar Hinz  <elmar.hinz@team-red.net>
+
+	* Version 0.0.9
+	* Compatibility to lib 0.0.23
+
+07-06-04 Elmar Hinz  <elmar.hinz@team-red.net>
+
+	* Version 0.0.8
+	* Compatibility to lib 0.0.21
+
+07-05-31 Elmar Hinz  <elmar.hinz@team-red.net>
+
+	* version 0.0.7
+	* Preparations for next version of lib/div.
+
+07-01-25 Elmar Hinz  <elmar.hinz@team-red.net>
+
+	* version 0.0.6
+	* minor modifications to support naming alterations of tx_lib
+
+07-01-23 Elmar Hinz  <elmar.hinz@team-red.net>
+
+	* version 0.0.5
+	* minor modifications to support the SPL chain
+
+07-01-15 Elmar Hinz  <elmar.hinz@team-red.net>
+
+	* version 0.0.4 (accidently skipped 0.0.3)
+	* synchronization with lib
+
+07-01-11 Elmar Hinz  <elmar.hinz@team-red.net>
+
+	* Added an icon
+	* version 0.0.2
+
+07-01-03 Elmar Hinz  <elmar.hinz@team-red.net>
+
+	* version 0.0.1
 	* Initial release

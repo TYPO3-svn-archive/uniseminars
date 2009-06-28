@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for module &quot;user_txuniseminarsM1&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="title">Course participants</label>
+			<label index="function">Function</label>
+			<label index="function1">Show Registrations</label>
+			<label index="function2">Delete Registrations</label>
+			<label index="function3">Log</label>
+			<label index="semester">Semester</label>
+			<label index="year">Year</label>
+			<label index="department">Department</label>
+			<label index="registrations">Registrations</label>
+			<label index="thisWeek">This week</label>
+			<label index="lastWeek">Last week</label>
+			<label index="last7days">Last 7 days</label>
+			<label index="thisMonth">This month</label>
+			<label index="lastMonth">Last month</label>
+			<label index="last31days">Last 31 days</label>
+			<label index="noLimit">No limit</label>
+			<label index="number">No.</label>
+			<label index="name">Name</label>
+			<label index="firstname">Firstname</label>
+			<label index="lastname">Lastname</label>
+			<label index="email">e-mail</label>
+			<label index="type">Type</label>
+			<label index="subject">Subject / Institute</label>
+			<label index="registration">Registration</label>
+			<label index="export_type">Choose fileformat</label>
+			<label index="export_type_xls">*.xls</label>
+			<label index="export_type_csv">*.csv</label>
+			<label index="export_data">Export</label>
+			<label index="download_file">Download File</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="title">Kursteilnehmer</label>
+			<label index="function">Funktion</label>
+			<label index="function1">Zeige Anmeldungen</label>
+			<label index="function2">Anmeldungen löschen</label>
+			<label index="function3">Log</label>
+			<label index="semester">Semester</label>
+			<label index="year">Jahr</label>
+			<label index="department">Department</label>
+			<label index="registrations">Anmeldungen</label>
+			<label index="thisWeek">Diese Woche</label>
+			<label index="lastWeek">Letzte Woche</label>
+			<label index="last7days">Letzte 7 Tage</label>
+			<label index="thisMonth">Diesen Monat</label>
+			<label index="lastMonth">Letzten Monat</label>
+			<label index="last31days">Letzten 31 Tage</label>
+			<label index="noLimit">Alle</label>
+			<label index="number">Nr.</label>
+			<label index="name">Name</label>
+			<label index="firstname">Vorname</label>
+			<label index="lastname">Nachname</label>
+			<label index="email">E-Mail</label>
+			<label index="type">Typ</label>
+			<label index="subject">Studienfach / Institut</label>
+			<label index="registration">Anmeldung</label>
+			<label index="export_type">Datei-Format</label>
+			<label index="export_type_xls">*.xls</label>
+			<label index="export_type_csv">*.csv</label>
+			<label index="export_data">Exportieren</label>
+			<label index="download_file">Datei herunterladen</label>
+		</languageKey>
+	</data>
+</T3locallang>

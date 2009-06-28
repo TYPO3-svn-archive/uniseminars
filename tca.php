@@ -8,7 +8,7 @@ $TCA["tx_uniseminars_courses"] = array (
 	),
 	"feInterface" => $TCA["tx_uniseminars_courses"]["feInterface"],
 	"columns" => array (
-		'sys_language_uid' => array (		
+		'sys_language_uid' => array (
 			'exclude' => 1,
 			'label'  => 'LLL:EXT:lang/locallang_general.xml:LGL.language',
 			'config' => array (
@@ -21,7 +21,7 @@ $TCA["tx_uniseminars_courses"] = array (
 				)
 			)
 		),
-		'l18n_parent' => array (		
+		'l18n_parent' => array (
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
 			'exclude'     => 1,
 			'label'       => 'LLL:EXT:lang/locallang_general.xml:LGL.l18n_parent',
@@ -34,12 +34,12 @@ $TCA["tx_uniseminars_courses"] = array (
 				'foreign_table_where' => 'AND tx_uniseminars_courses.pid=###CURRENT_PID### AND tx_uniseminars_courses.sys_language_uid IN (-1,0)',
 			)
 		),
-		'l18n_diffsource' => array (		
+		'l18n_diffsource' => array (
 			'config' => array (
 				'type' => 'passthrough'
 			)
 		),
-		'hidden' => array (		
+		'hidden' => array (
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
 			'config'  => array (
@@ -47,7 +47,7 @@ $TCA["tx_uniseminars_courses"] = array (
 				'default' => '0'
 			)
 		),
-		'starttime' => array (		
+		'starttime' => array (
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.starttime',
 			'config'  => array (
@@ -59,7 +59,7 @@ $TCA["tx_uniseminars_courses"] = array (
 				'checkbox' => '0'
 			)
 		),
-		'endtime' => array (		
+		'endtime' => array (
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.endtime',
 			'config'  => array (
@@ -75,7 +75,7 @@ $TCA["tx_uniseminars_courses"] = array (
 				)
 			)
 		),
-		'fe_group' => array (		
+		'fe_group' => array (
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.fe_group',
 			'config'  => array (
@@ -89,18 +89,18 @@ $TCA["tx_uniseminars_courses"] = array (
 				'foreign_table' => 'fe_groups'
 			)
 		),
-		"title" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.title",		
+		"title" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.title",
 			"config" => Array (
-				"type" => "input",	
-				"size" => "30",	
+				"type" => "input",
+				"size" => "30",
 				"eval" => "required",
 			)
 		),
-		"type" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.type",		
+		"type" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.type",
 			"config" => Array (
 				"type" => "radio",
 				"items" => Array (
@@ -109,21 +109,21 @@ $TCA["tx_uniseminars_courses"] = array (
 				),
 			)
 		),
-		"department" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.department",		
+		"department" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.department",
 			"config" => Array (
-				"type" => "group",	
-				"internal_type" => "db",	
-				"allowed" => "tx_uniseminars_department",	
-				"size" => 3,	
+				"type" => "group",
+				"internal_type" => "db",
+				"allowed" => "tx_uniseminars_department",
+				"size" => 3,
 				"minitems" => 0,
 				"maxitems" => 5,
 			)
 		),
-		"coursetype" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.coursetype",		
+		"coursetype" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.coursetype",
 			"config" => Array (
 				"type" => "select",
 				"items" => Array (
@@ -136,53 +136,54 @@ $TCA["tx_uniseminars_courses"] = array (
 					Array("LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.coursetype.I.6", "6"),
 					Array("LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.coursetype.I.7", "7"),
 					Array("LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.coursetype.I.8", "8"),
+					Array("LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.coursetype.I.9", "9"),
 				),
-				"size" => 1,	
+				"size" => 1,
 				"maxitems" => 1,
 			)
 		),
-		"semester" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.semester",		
+		"semester" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.semester",
 			"config" => Array (
 				"type" => "select",
 				"items" => Array (
 					Array("LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.semester.I.0", "0"),
 					Array("LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.semester.I.1", "1"),
 				),
-				"size" => 1,	
+				"size" => 1,
 				"maxitems" => 1,
 			)
 		),
-		"year" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.year",		
+		"year" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.year",
 			"config" => Array (
-				"type" => "input",	
-				"size" => "30",	
+				"type" => "input",
+				"size" => "30",
 				"eval" => "required",
 			)
 		),
-		"lecturer" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.lecturer",		
+		"lecturer" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.lecturer",
 			"config" => Array (
-				"type" => "input",	
+				"type" => "input",
 				"size" => "30",
 			)
 		),
-		"credits" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.credits",		
+		"credits" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.credits",
 			"config" => Array (
-				"type" => "input",	
-				"size" => "30",	
+				"type" => "input",
+				"size" => "30",
 				"eval" => "double2",
 			)
 		),
-		"objective" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.objective",		
+		"objective" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.objective",
 			"config" => Array (
 				"type" => "text",
 				"cols" => "30",
@@ -200,9 +201,9 @@ $TCA["tx_uniseminars_courses"] = array (
 				),
 			)
 		),
-		"targets" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.targets",		
+		"targets" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.targets",
 			"config" => Array (
 				"type" => "text",
 				"cols" => "30",
@@ -220,9 +221,9 @@ $TCA["tx_uniseminars_courses"] = array (
 				),
 			)
 		),
-		"prerequisites" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.prerequisites",		
+		"prerequisites" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.prerequisites",
 			"config" => Array (
 				"type" => "text",
 				"cols" => "30",
@@ -240,9 +241,9 @@ $TCA["tx_uniseminars_courses"] = array (
 				),
 			)
 		),
-		"reading" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.reading",		
+		"reading" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.reading",
 			"config" => Array (
 				"type" => "text",
 				"cols" => "30",
@@ -260,17 +261,17 @@ $TCA["tx_uniseminars_courses"] = array (
 				),
 			)
 		),
-		"datelocation" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.datelocation",		
+		"datelocation" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.datelocation",
 			"config" => Array (
-				"type" => "input",	
+				"type" => "input",
 				"size" => "30",
 			)
 		),
-		"start" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.start",		
+		"start" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.start",
 			"config" => Array (
 				"type"     => "input",
 				"size"     => "8",
@@ -280,25 +281,25 @@ $TCA["tx_uniseminars_courses"] = array (
 				"default"  => "0"
 			)
 		),
-		"grading" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.grading",		
+		"grading" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.grading",
 			"config" => Array (
-				"type" => "input",	
+				"type" => "input",
 				"size" => "30",
 			)
 		),
-		"examdate" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.examdate",		
+		"examdate" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.examdate",
 			"config" => Array (
-				"type" => "input",	
+				"type" => "input",
 				"size" => "30",
 			)
 		),
-		"closed" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.closed",		
+		"closed" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.closed",
 			"config" => Array (
 				"type" => "select",
 				"items" => Array (
@@ -307,24 +308,24 @@ $TCA["tx_uniseminars_courses"] = array (
 					Array("LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.closed.I.2", "2"),
 					Array("LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.closed.I.3", "3"),
 				),
-				"size" => 1,	
+				"size" => 1,
 				"maxitems" => 1,
 			)
 		),
-		"contact" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.contact",		
+		"contact" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.contact",
 			"config" => Array (
-				"type" => "input",	
+				"type" => "input",
 				"size" => "30",
 			)
 		),
-		"email" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.email",		
+		"email" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_courses.email",
 			"config" => Array (
-				"type" => "input",	
-				"size" => "30",	
+				"type" => "input",
+				"size" => "30",
 				"wizards" => Array(
 					"_PADDING" => 2,
 					"link" => Array(
@@ -355,7 +356,7 @@ $TCA["tx_uniseminars_department"] = array (
 	),
 	"feInterface" => $TCA["tx_uniseminars_department"]["feInterface"],
 	"columns" => array (
-		'sys_language_uid' => array (		
+		'sys_language_uid' => array (
 			'exclude' => 1,
 			'label'  => 'LLL:EXT:lang/locallang_general.xml:LGL.language',
 			'config' => array (
@@ -368,7 +369,7 @@ $TCA["tx_uniseminars_department"] = array (
 				)
 			)
 		),
-		'l18n_parent' => array (		
+		'l18n_parent' => array (
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
 			'exclude'     => 1,
 			'label'       => 'LLL:EXT:lang/locallang_general.xml:LGL.l18n_parent',
@@ -381,12 +382,12 @@ $TCA["tx_uniseminars_department"] = array (
 				'foreign_table_where' => 'AND tx_uniseminars_department.pid=###CURRENT_PID### AND tx_uniseminars_department.sys_language_uid IN (-1,0)',
 			)
 		),
-		'l18n_diffsource' => array (		
+		'l18n_diffsource' => array (
 			'config' => array (
 				'type' => 'passthrough'
 			)
 		),
-		'hidden' => array (		
+		'hidden' => array (
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
 			'config'  => array (
@@ -394,7 +395,7 @@ $TCA["tx_uniseminars_department"] = array (
 				'default' => '0'
 			)
 		),
-		'fe_group' => array (		
+		'fe_group' => array (
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.fe_group',
 			'config'  => array (
@@ -408,20 +409,20 @@ $TCA["tx_uniseminars_department"] = array (
 				'foreign_table' => 'fe_groups'
 			)
 		),
-		"name" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_department.name",		
+		"name" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_department.name",
 			"config" => Array (
-				"type" => "input",	
-				"size" => "30",	
+				"type" => "input",
+				"size" => "30",
 				"eval" => "required",
 			)
 		),
-		"description" => Array (		
-			"exclude" => 1,		
-			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_department.description",		
+		"description" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_department.description",
 			"config" => Array (
-				"type" => "input",	
+				"type" => "input",
 				"size" => "30",
 			)
 		),
@@ -433,4 +434,108 @@ $TCA["tx_uniseminars_department"] = array (
 		"1" => array("showitem" => "fe_group")
 	)
 );
+
+$TCA["tx_uniseminars_guests"] = array (
+    "ctrl" => $TCA["tx_uniseminars_guests"]["ctrl"],
+    "interface" => array (
+        "showRecordFieldList" => "hidden,courseid,firstname,lastname,email,subject,type"
+    ),
+    "feInterface" => $TCA["tx_uniseminars_guests"]["feInterface"],
+    "columns" => array (
+        'hidden' => array (
+            'exclude' => 1,
+            'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
+            'config'  => array (
+                'type'    => 'check',
+                'default' => '0'
+            )
+        ),
+        "courseid" => Array (
+            "exclude" => 1,
+            "label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_guests.courseid",
+            "config" => Array (
+                "type" => "select",
+                "foreign_table" => "tx_uniseminars_courses",
+                "foreign_table_where" => "ORDER BY tx_uniseminars_courses.uid",
+                "size" => 1,
+                "minitems" => 0,
+                "maxitems" => 1,
+            )
+        ),
+        "firstname" => Array (
+            "exclude" => 1,
+            "label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_guests.firstname",
+            "config" => Array (
+                "type" => "input",
+                "size" => "30",
+            )
+        ),
+        "lastname" => Array (
+            "exclude" => 1,
+            "label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_guests.lastname",
+            "config" => Array (
+                "type" => "input",
+                "size" => "30",
+            )
+        ),
+        "email" => Array (
+            "exclude" => 1,
+            "label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_guests.email",
+            "config" => Array (
+                "type" => "input",
+                "size" => "30",
+            )
+        ),
+        "subject" => Array (
+            "exclude" => 1,
+            "label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_guests.subject",
+            "config" => Array (
+                "type" => "input",
+                "size" => "30",
+            )
+        ),
+        "type" => Array (
+            "exclude" => 1,
+            "label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_guests.type",
+            "config" => Array (
+                "type" => "radio",
+                "items" => Array (
+                    Array("LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_guests.type.I.0", "0"),
+                    Array("LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_guests.type.I.1", "1"),
+                ),
+            )
+        ),
+
+		"semester" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_guests.semester",
+			"config" => Array (
+				"type" => "select",
+				"items" => Array (
+					Array("LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_guests.semester.I.0", "0"),
+					Array("LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_guests.semester.I.1", "1"),
+				),
+				"size" => 1,
+				"maxitems" => 1,
+			)
+		),
+		"year" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:uniseminars/locallang_db.xml:tx_uniseminars_guests.year",
+			"config" => Array (
+				"type" => "input",
+				"size" => "30",
+				"eval" => "required",
+			)
+		),
+
+    ),
+    "types" => array (
+        "0" => array("showitem" => "hidden;;1;;1-1-1, courseid, firstname, lastname, email, subject, type, semester, year")
+    ),
+    "palettes" => array (
+        "1" => array("showitem" => "")
+    )
+);
+
 ?>

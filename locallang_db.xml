@@ -6,6 +6,15 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
+			<label index="uniseminarsPluginLabel">Uni-Seminars</label>
+			<label index="flexform.mainSheetTitle">Data-Selection</label>
+			<label index="flexform.yearSelection">Year</label>
+			<label index="flexform.termSelection">Term</label>
+			<label index="flexform.termSelection.winter">winter-term</label>
+			<label index="flexform.termSelection.summer">summer-term</label>
+			<label index="flexform.guestFolderSelection">Save Guests to Folder</label>
+			<label index="flexform.redirectRegisterPID">Redirect after Registration to</label>
+            <label index="flexform.registerPID">Registration-Page</label>
 			<label index="tx_uniseminars_courses">Courses</label>
 			<label index="tx_uniseminars_courses.title">Title</label>
 			<label index="tx_uniseminars_courses.type.I.0">Master</label>
@@ -21,6 +30,7 @@
 			<label index="tx_uniseminars_courses.coursetype.I.6">Journal Club</label>
 			<label index="tx_uniseminars_courses.coursetype.I.7">Laboratory Rotation</label>
 			<label index="tx_uniseminars_courses.coursetype.I.8">Lab visit</label>
+			<label index="tx_uniseminars_courses.coursetype.I.9">Seminar with invited speakers</label>
 			<label index="tx_uniseminars_courses.coursetype">Course-Type</label>
 			<label index="tx_uniseminars_courses.semester.I.0">Summer Term</label>
 			<label index="tx_uniseminars_courses.semester.I.1">Winter Term</label>
@@ -46,9 +56,30 @@
 			<label index="tx_uniseminars_department">Departments</label>
 			<label index="tx_uniseminars_department.name">name</label>
 			<label index="tx_uniseminars_department.description">Description</label>
-			<label index="tt_content.list_type_pi1">Uni-Seminars</label>
+			<label index="tx_uniseminars_guests">Attendant</label>
+			<label index="tx_uniseminars_guests.courseid">Course</label>
+			<label index="tx_uniseminars_guests.firstname">First name</label>
+			<label index="tx_uniseminars_guests.lastname">Last name</label>
+			<label index="tx_uniseminars_guests.email">E-mail</label>
+			<label index="tx_uniseminars_guests.subject">Faculty / Institute</label>
+			<label index="tx_uniseminars_guests.type">Student-Type</label>
+			<label index="tx_uniseminars_guests.type.I.0">Graduate Training Center</label>
+			<label index="tx_uniseminars_guests.type.I.1">Guest</label>
+            <label index="tx_uniseminars_guests.semester.I.0">Summer Term</label>
+			<label index="tx_uniseminars_guests.semester.I.1">Winter Term</label>
+			<label index="tx_uniseminars_guests.semester">Semester</label>
+			<label index="tx_uniseminars_guests.year">Year</label>
 		</languageKey>
 		<languageKey index="de" type="array">
+			<label index="uniseminarsPluginLabel">Uni-Seminare</label>
+			<label index="flexform.mainSheetTitle">Daten-Auswahl</label>
+			<label index="flexform.yearSelection">Jahr</label>
+			<label index="flexform.termSelection">Semester</label>
+			<label index="flexform.termSelection.winter">Winter-Semester</label>
+			<label index="flexform.termSelection.summer">Sommer-Semester</label>
+			<label index="flexform.guestFolderSelection">Kursteilnehmern speichern in</label>
+			<label index="flexform.redirectRegisterPID">Nach Registrierung weterleiten nach</label>
+            <label index="flexform.registerPID">Registrierungs-Seite</label>
 			<label index="tx_uniseminars_courses">Veranstaltungen</label>
 			<label index="tx_uniseminars_courses.title">Titel</label>
 			<label index="tx_uniseminars_courses.type.I.0">Master</label>
@@ -89,7 +120,19 @@
 			<label index="tx_uniseminars_department">Institute</label>
 			<label index="tx_uniseminars_department.name">Name</label>
 			<label index="tx_uniseminars_department.description">Beschreibung</label>
-			<label index="tt_content.list_type_pi1">Uni-Seminare</label>
+			<label index="tx_uniseminars_guests">Kurs-Teilnehmer</label>
+			<label index="tx_uniseminars_guests.courseid">Kurs</label>
+			<label index="tx_uniseminars_guests.firstname">Vorname</label>
+			<label index="tx_uniseminars_guests.lastname">Nachname</label>
+			<label index="tx_uniseminars_guests.email">E-Mail</label>
+			<label index="tx_uniseminars_guests.subject">Studienfach / Institut</label>
+			<label index="tx_uniseminars_guests.type">Studenten-Typ</label>
+			<label index="tx_uniseminars_guests.type.I.0">Graduate Training Center</label>
+			<label index="tx_uniseminars_guests.type.I.1">Gasthörer</label>
+            <label index="tx_uniseminars_guests.semester.I.0">Sommer-Semester</label>
+			<label index="tx_uniseminars_guests.semester.I.1">Winter-Semester</label>
+			<label index="tx_uniseminars_guests.semester">Semester</label>
+			<label index="tx_uniseminars_guests.year">Jahr</label>
 		</languageKey>
 	</data>
 </T3locallang>

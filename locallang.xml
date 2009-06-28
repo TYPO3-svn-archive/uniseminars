@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for 'uniseminars'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="coursetype">Course-Type</label>
+			<label index="coursetype.I.0">Lecture course</label>
+			<label index="coursetype.I.1">Lecture course with exercises</label>
+			<label index="coursetype.I.2">Lecture course with practical</label>
+			<label index="coursetype.I.3">Practical course</label>
+			<label index="coursetype.I.4">Student Seminar</label>
+			<label index="coursetype.I.5">Tutorial</label>
+			<label index="coursetype.I.6">Journal Club</label>
+			<label index="coursetype.I.7">Laboratory Rotation</label>
+			<label index="coursetype.I.8">Lab visit</label>
+			<label index="coursetype.I.9">Seminar with invited speakers</label>
+			<label index="closed">Guests</label>
+			<label index="closed.I.0">course open for doctoral and guest students</label>
+			<label index="closed.I.1">course exclusively for master students</label>
+			<label index="closed.I.2">sorry, the course is full</label>
+			<label index="closed.I.3">registration not yet open</label>
+			<label index="winterterm">Winter Term</label>
+			<label index="summerterm">Summer Term</label>
+            <label index="iam">I am a</label>
+            <label index="trainingcenter">Student of the Graduate Training Center</label>
+            <label index="guest">Guest</label>
+            <label index="firstname">First name</label>
+            <label index="lastname">Last name</label>
+            <label index="email">E-mail</label>
+            <label index="subject">Faculty / Institute</label>
+            <label index="preview">Next</label>
+            <label index="save">Send</label>
+            <label index="clear">Clear</label>
+            <label index="edit">Edit</label>
+            <label index="plus">+</label>
+            <label index="minus">-</label>
+			<label index="error">Error</label>
+            <label index="emptyFirstnameError">First name is missing!</label>
+            <label index="emptyLastnameError">Last name is missing!</label>
+            <label index="emptyEmailError">E-mail is missing!</label>
+            <label index="invalidEmailError">Invalid e-mail!</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="coursetype">Veranstaltungstyp</label>
+			<label index="coursetype.I.0">Vorlesung</label>
+			<label index="coursetype.I.1">Vorlesung mit Übungen</label>
+			<label index="coursetype.I.2">Vorlesung mit Praktikum</label>
+			<label index="coursetype.I.3">Praktikum</label>
+			<label index="coursetype.I.4">Seminar</label>
+			<label index="coursetype.I.5">Tutorial</label>
+			<label index="coursetype.I.6">Journal Club</label>
+			<label index="coursetype.I.7">Laboratory Rotation</label>
+			<label index="coursetype.I.8">Laborbesuch</label>
+			<label index="coursetype.I.9">Seminar mit Gastdozent</label>
+			<label index="closed">Guests</label>
+			<label index="closed.I.0">Kurs offen auch für Doktoranten und Gasthörer</label>
+			<label index="closed.I.1">Kurs ist exklusiv für Master-Studenten</label>
+			<label index="closed.I.2">Sorry, der Kurs ist leider voll</label>
+			<label index="closed.I.3">Anmeldung zur Zeit nicht möglich</label>
+			<label index="winterterm">Winter-Semester</label>
+			<label index="summerterm">Sommer-Semester</label>
+            <label index="iam">Ich bin</label>
+            <label index="trainingcenter">Student des Graduate Training Center</label>
+            <label index="guest">Gast</label>
+            <label index="firstname">Vorname</label>
+            <label index="lastname">Nachname</label>
+            <label index="email">E-Mail</label>
+            <label index="subject">Fach oder Institut</label>
+            <label index="preview">Weiter</label>
+            <label index="save">Speichern</label>
+            <label index="clear">Zurücksetzen</label>
+            <label index="edit">Bearbeiten</label>
+            <label index="plus">+</label>
+            <label index="minus">-</label>
+			<label index="error">Fehler</label>
+            <label index="emptyFirstnameError">Firstname fehlt!</label>
+            <label index="emptyLastnameError">Lastname fehlt!</label>
+            <label index="emptyEmailError">E-Mail-Adresse fehlt!</label>
+            <label index="invalidEmailError">Bitte korrekte E-Mail-Adresse angeben!</label>
+		</languageKey>
+	</data>
+</T3locallang>
+

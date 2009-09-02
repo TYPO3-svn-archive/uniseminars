@@ -29,6 +29,7 @@
 			<label index="email">e-mail</label>
 			<label index="type">Type</label>
 			<label index="subject">Subject / Institute</label>
+			<label index="edit">edit</label>
 			<label index="registration">Registration</label>
 			<label index="export_type">Choose fileformat</label>
 			<label index="export_type_xls">*.xls</label>
@@ -60,6 +61,7 @@
 			<label index="email">E-Mail</label>
 			<label index="type">Typ</label>
 			<label index="subject">Studienfach / Institut</label>
+			<label index="type">Bearbeiten</label>
 			<label index="registration">Anmeldung</label>
 			<label index="export_type">Datei-Format</label>
 			<label index="export_type_xls">*.xls</label>

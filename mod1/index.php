@@ -93,7 +93,8 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
 				'2' => Array('<td width="260px" valign="top" class="c-headLineTable"><b>','</b></td><td class="c-headLineTable"><img src="'.$this->doc->backPath.'clear.gif" width="5" height="1"></td>'),
 				'3' => Array('<td width="40px" valign="top" class="c-headLineTable"><b>','</b></td><td class="c-headLineTable"><img src="'.$this->doc->backPath.'clear.gif" width="5" height="1"></td>'),
 				'4' => Array('<td width="480px" valign="top" class="c-headLineTable"><b>','</b></td><td class="c-headLineTable"><img src="'.$this->doc->backPath.'clear.gif" width="5" height="1"></td>'),
-				'5' => Array('<td width="45px" valign="top" class="c-headLineTable"><b>','</b></td><td class="c-headLineTable"><img src="'.$this->doc->backPath.'clear.gif" width="5" height="1"></td>'),
+				'5' => Array('<td width="70px" valign="top" class="c-headLineTable"><b>','</b></td><td class="c-headLineTable"><img src="'.$this->doc->backPath.'clear.gif" width="5" height="1"></td>'),
+				'6' => Array('<td width="45px" valign="top" class="c-headLineTable"><b>','</b></td><td class="c-headLineTable"><img src="'.$this->doc->backPath.'clear.gif" width="5" height="1"></td>'),
 				'defCol' => Array('<td valign="top" class="c-headLineTable"><b>','</b></td><td class="c-headLineTable"><img src="'.$this->doc->backPath.'clear.gif" width="5" height="1"></td>')
 			),
 			'defRow' => Array (
@@ -346,6 +347,7 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
 							$codeArr[$i][] = $row['email'];
 							$codeArr[$i][] = $this->getGuestType($row['type']);
 							$codeArr[$i][] = $row['subject'];
+							$codeArr[$i][] = $this->elementLinks('tx_uniseminars_guests',$row);
 							$codeArr[$i][] = $this->doc->formatTime($row['tstamp'],10);
 					}
 				}
@@ -369,13 +371,46 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
                             </tr>
                         </table>';
 
-        $this->content .= '</form><br /><br />';
+        		$this->content .= '</form><br /><br />';
 				if (t3lib_div::GPvar('submit_form')){
 						$this->content .= $this->writeExportFile();
 				}
 		}
 	}
 
+	/**
+	 * Builds a list of all links for a specific element and returns it for print.
+	 *
+	 * @param	string		the db table that should be used
+	 * @param	array		the BE user record to use
+	 * @return	string		a HTML formatted list of the link
+	 */
+	function elementLinks($table,$row)	{
+			// Info:
+		$cells[]='<a href="#" onclick="top.launchView(\''.$table.'\', \''.$row['uid'].'\',\''.$GLOBALS['BACK_PATH'].'\'); return false;"><img '.t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'],'gfx/zoom2.gif').' border="0" align="top" title="Show information" alt="" /></a>';
+
+			// Edit:
+		$params='&edit['.$table.']['.$row['uid'].']=edit';
+		$cells[]='<a href="#" onclick="'.t3lib_BEfunc::editOnClick($params,$GLOBALS['BACK_PATH'],'').'"><img '.t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'],'gfx/edit2.gif').' border="0" align="top" title="Edit" alt="" /></a>';
+
+			// Hide:
+		$hiddenField = $GLOBALS['TCA'][$table]['ctrl']['enablecolumns']['disabled'];
+		if ($row[$hiddenField])	{
+			$params='&data['.$table.']['.$row['uid'].']['.$hiddenField.']=0';
+			$cells[]='<a href="'.$this->doc->issueCommand($params).'"><img '.t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'],'gfx/button_unhide.gif').' border="0" title="Enable" align="top" alt="" /></a>';
+		} else {
+			$params='&data['.$table.']['.$row['uid'].']['.$hiddenField.']=1';
+			$cells[]='<a href="'.$this->doc->issueCommand($params).'"><img '.t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'],'gfx/button_hide.gif').' border="0" title="Disable" align="top" alt="" /></a>';
+		}
+
+			// Delete
+		$params='&cmd['.$table.']['.$row['uid'].'][delete]=1';
+		$cells[]='<a href="'.$this->doc->issueCommand($params).'" onclick="return confirm(unescape(\''.rawurlencode('Are you sure you want to delete this element?').'\'));"><img '.t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'],'gfx/garbage.gif').' border="0" align="top" title="Delete(!)" alt="" /></a>';
+
+		return implode('',$cells);
+	}	
+	
+	
 	/**
 	 * Generate the Student-List
 	 * 
@@ -428,6 +463,9 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
 		}	
 		$table = 'tx_uniseminars_guests';
 		$select = '*';
+		//$select = 'p.uid,p.hidden,p.crdate,p.title,p.lastname,p.firstname,p.note,p.tstamp,a.parentid,a.street,a.zip,a.city';
+		
+		
 		$where = '(deleted = 0)'.$where_part;
 		$groupBy = '';
 		$orderBy = 'courseid, lastname ASC';
@@ -449,6 +487,7 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
 		$codeArr[0][] = $LANG->getLL('email');
 		$codeArr[0][] = $LANG->getLL('type');
 		$codeArr[0][] = $LANG->getLL('subject');
+		$codeArr[0][] = $LANG->getLL('edit');
 		$codeArr[0][] = $LANG->getLL('registration');
 		return $codeArr;
 	}

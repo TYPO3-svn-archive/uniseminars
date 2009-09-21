@@ -125,9 +125,9 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
 		$limit = '';
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select, $table, $where, $groupBy, $orderBy,	$limit);
 		if ($res) {
-				while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res))	{
-						$this->DEPARTMENTS[$row['uid']] = array('name'=>$row['name'],'description'=>$row['description']);
-				}
+			while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res))	{
+					$this->DEPARTMENTS[$row['uid']] = array('name'=>$row['name'],'description'=>$row['description']);
+			}
 		}
 	}
 
@@ -143,13 +143,16 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
 		//$this->content.=t3lib_div::view_array($this->COURSES);
 		$where_part='';
 		if(isset($this->MOD_SETTINGS['semester'])){
-				$where_part.=' AND semester = '.intval($this->MOD_SETTINGS['semester']);
+			$where_part.=' AND semester = '.intval($this->MOD_SETTINGS['semester']);
 		}
 		if($this->MOD_SETTINGS['year'] > 0){
-				$where_part.=' AND (year = "'.intval($this->MOD_SETTINGS['year']).'")';
+			$where_part.=' AND (year = "'.intval($this->MOD_SETTINGS['year']).'")';
 		}
+		
 		if(isset($this->MOD_SETTINGS['departments'])){
-				$where_part.=' AND department = '.intval($this->MOD_SETTINGS['departments']);
+			if(intval($this->MOD_SETTINGS['departments']) != 0){
+				$where_part.=' AND (department LIKE  "%'.intval($this->MOD_SETTINGS['departments']).'%")';
+			}				
 		}
 		$table = 'tx_uniseminars_courses';
 		$select = '*';
@@ -160,9 +163,9 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
 		$limit = '';
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select, $table, $where, $groupBy, $orderBy,	$limit);
 		if ($res) {
-				while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res))	{
-						$this->COURSES[$row['uid']] = array('title'=>$row['title'],'lecturer'=>$row['lecturer'],'departmentUid'=>$row['department']);
-				}
+			while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res))	{
+				$this->COURSES[$row['uid']] = array('title'=>$row['title'],'lecturer'=>$row['lecturer'],'departmentUid'=>$row['department']);
+			}
 		}
 	}
 
@@ -208,6 +211,7 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
 			),
 		);
 		$this->MOD_MENU['departments'] = array();
+		$this->MOD_MENU['departments'][0] = 'Alle';
 		if (is_array($this->DEPARTMENTS))	{
 			foreach($this->DEPARTMENTS as $key=>$value){
 				$this->MOD_MENU['departments'][$key] = $value['name'];
@@ -309,57 +313,57 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
 	 * Make output for the StudentList
 	 */
 	protected function printStudentList(){
-			global $BE_USER,$LANG,$BACK_PATH,$TCA_DESCR,$TCA,$CLIENT,$TYPO3_CONF_VARS;
-			$this->content.=$this->doc->header($LANG->getLL('registrations'));
-			$this->content.=$this->doc->spacer(5);
-			// Menu compiled:
-			//$this->loadCourseArray();
-			$this->menuConfig();
-			$menuCourses = t3lib_BEfunc::getFuncMenu(0,'SET[courses]',$this->MOD_SETTINGS['courses'],$this->MOD_MENU['courses']);
+		global $BE_USER,$LANG,$BACK_PATH,$TCA_DESCR,$TCA,$CLIENT,$TYPO3_CONF_VARS;
+		$this->content.=$this->doc->header($LANG->getLL('registrations'));
+		$this->content.=$this->doc->spacer(5);
+		// Menu compiled:
+		//$this->loadCourseArray();
+		$this->menuConfig();
+		$menuCourses = t3lib_BEfunc::getFuncMenu(0,'SET[courses]',$this->MOD_SETTINGS['courses'],$this->MOD_MENU['courses']);
 
-			$this->content .= $this->doc->section('',$this->doc->menuTable(
-					array(
-						array('Courses:',$menuCourses),
-						array('','')
-					)
-			));
-			$this->content.=$this->doc->spacer(15);
-			$codeArr = $this->initArray();
-			$oldHeader='';
-			$c=0;
-			$content = '';
-			$res = $this->getStudentList();
-			if ($res) {
-				while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res))	{
-					if($this->COURSES[$row['courseid']]['departmentUid'] == $this->MOD_SETTINGS['departments']){
-							$header = $this->COURSES[$row['courseid']]['title'].' ['.$this->COURSES[$row['courseid']]['lecturer'].']';
-							if (!$oldHeader)	$oldHeader=$header;
-							if ($header != $oldHeader)	{
-								$this->content.=$this->doc->spacer(10);
-								$this->content.=$this->doc->section($oldHeader,$this->doc->table($codeArr));
-								$codeArr=$this->initArray();
-								$oldHeader=$header;
-								$i = 0;
-							}
-							$i++;
-							$codeArr[$i][] = $i;
-							$codeArr[$i][] = $row['lastname'].', '.$row['firstname'];
-							$codeArr[$i][] = $row['email'];
-							$codeArr[$i][] = $this->getGuestType($row['type']);
-							$codeArr[$i][] = $row['subject'];
-							$codeArr[$i][] = $this->elementLinks('tx_uniseminars_guests',$row);
-							$codeArr[$i][] = $this->doc->formatTime($row['tstamp'],10);
+		$this->content .= $this->doc->section('',$this->doc->menuTable(
+			array(
+				array('Courses:',$menuCourses),
+				array('','')
+			)
+		));
+		$this->content.=$this->doc->spacer(15);
+		$codeArr = $this->initArray();
+		$oldHeader='';
+		$c=0;
+		$content = '';
+		$res = $this->getStudentList();
+		if ($res) {
+			while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res))	{
+				//if(($this->COURSES[$row['courseid']]['departmentUid'] == $this->MOD_SETTINGS['departments']) OR ($this->MOD_SETTINGS['departments'] == 0)){
+					$header = $this->COURSES[$row['courseid']]['title'].' ['.$this->COURSES[$row['courseid']]['lecturer'].']';
+					if (!$oldHeader)	$oldHeader=$header;
+					if ($header != $oldHeader)	{
+						$this->content.=$this->doc->spacer(10);
+						$this->content.=$this->doc->section($oldHeader,$this->doc->table($codeArr));
+						$codeArr=$this->initArray();
+						$oldHeader=$header;
+						$i = 0;
 					}
-				}
-				//$this->content.=t3lib_div::view_array($this->MOD_SETTINGS);
+					$i++;
+					$codeArr[$i][] = $i;
+					$codeArr[$i][] = $row['lastname'].', '.$row['firstname'];
+					$codeArr[$i][] = $row['email'];
+					$codeArr[$i][] = $this->getGuestType($row['type']);
+					$codeArr[$i][] = $row['subject'];
+					$codeArr[$i][] = $this->elementLinks('tx_uniseminars_guests',$row);
+					$codeArr[$i][] = $this->doc->formatTime($row['tstamp'],10);
+				//}
+			}
+			//$this->content.=t3lib_div::view_array($this->MOD_SETTINGS);
 
-				$GLOBALS['TYPO3_DB']->sql_free_result($res);
-				$this->content .= $this->doc->spacer(10);
-				$this->content .= $this->doc->section($header,$this->doc->table($codeArr));
-				$this->content.=$this->doc->spacer(10);
-				$this->content .= '<form id="export_form" action="index.php" method="post" enctype="'.$GLOBALS['TYPO3_CONF_VARS']['SYS']['form_enctype'].'">
-													 <table cellpadding="0" cellspacing="0">';
-				$this->content .= 
+			$GLOBALS['TYPO3_DB']->sql_free_result($res);
+			$this->content .= $this->doc->spacer(10);
+			$this->content .= $this->doc->section($header,$this->doc->table($codeArr));
+			$this->content.=$this->doc->spacer(10);
+			$this->content .= '<form id="export_form" action="index.php" method="post" enctype="'.$GLOBALS['TYPO3_CONF_VARS']['SYS']['form_enctype'].'">
+												 <table cellpadding="0" cellspacing="0">';
+			$this->content .= 
                         '<table cellpadding="0" cellspacing="0">
                             <tr>
                                 <td style="padding-right: 15px;">'.$LANG->getLL('export_type').':</td>
@@ -371,10 +375,10 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
                             </tr>
                         </table>';
 
-        		$this->content .= '</form><br /><br />';
-				if (t3lib_div::GPvar('submit_form')){
-						$this->content .= $this->writeExportFile();
-				}
+        	$this->content .= '</form><br /><br />';
+			if (t3lib_div::GPvar('submit_form')){
+					$this->content .= $this->writeExportFile();
+			}
 		}
 	}
 
@@ -500,68 +504,67 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
 		* @return	file data
 		*/
 		function writeExportFile(){
-				global $LANG;
-
-				$colTitles = array(
-												$LANG->getLL('number'),
-												$LANG->getLL('firstname'),
-												$LANG->getLL('lastname'),
-												$LANG->getLL('email'),
-												$LANG->getLL('type'),
-												$LANG->getLL('subject'),
-												$LANG->getLL('registration')
-											);
+			global $LANG;
+			$colTitles = array(
+							$LANG->getLL('number'),
+							$LANG->getLL('firstname'),
+							$LANG->getLL('lastname'),
+							$LANG->getLL('email'),
+							$LANG->getLL('type'),
+							$LANG->getLL('subject'),
+							$LANG->getLL('registration')
+						);
 				$fileContent = '';
 				$i = 0;
 				if (count($colTitles) > 0 && t3lib_div::GPvar('export_type') != ''){
 						//$res = $this->getSqlQueryData(implode(',', $sSelectCol), 'fe_users', 'usergroup='.implode(',', $sSelectUsg));
 						$res = $this->getStudentList();
 						if ($res) {
-								while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res))	{
-										//$studentList[] = $row;
-										$i++;
-										$studentList[$i][] = $i;
-										$studentList[$i][] = $row['firstname'];
-										$studentList[$i][] = $row['lastname'];
-										$studentList[$i][] = $row['email'];
-										$studentList[$i][] = $this->getGuestType($row['type']);
-										$studentList[$i][] = $row['subject'];
-										$studentList[$i][] = $this->doc->formatTime($row['tstamp'],10);
-								}
+							while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res))	{
+								//$studentList[] = $row;
+								$i++;
+								$studentList[$i][] = $i;
+								$studentList[$i][] = $row['firstname'];
+								$studentList[$i][] = $row['lastname'];
+								$studentList[$i][] = $row['email'];
+								$studentList[$i][] = $this->getGuestType($row['type']);
+								$studentList[$i][] = $row['subject'];
+								$studentList[$i][] = $this->doc->formatTime($row['tstamp'],10);
+							}
 						}
 						if (!empty($studentList)){
 								if (t3lib_div::GPvar('export_type') == 'csv'){
-										foreach ($colTitles as $title){
-												$fileContent .= '"'.$title.'";';
-										}
-										$fileContent .= "\n";
-										foreach ($studentList as $student){
-												$fileContent .= '"'.implode('";"', array_values($student)).'";'."\n";
-										}
-										$export_type = 'csv';
+									foreach ($colTitles as $title){
+											$fileContent .= '"'.$title.'";';
+									}
+									$fileContent .= "\n";
+									foreach ($studentList as $student){
+											$fileContent .= '"'.implode('";"', array_values($student)).'";'."\n";
+									}
+									$export_type = 'csv';
 								} elseif (t3lib_div::GPvar('export_type') == 'xls'){
-										$fileContent .=
-												'<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
-														<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-														<html>
-																<head>
-																		<meta http-equiv="Content-type" content="text/html;charset=utf-8" />
-																		<style id="Classeur1_16681_Styles">
-																		</style>
-																</head>
-																<body>
-																		<div id="Classeur1_16681" align=center x:publishsource="Excel">
-																				<table x:str border=0 cellpadding=0 cellspacing=0 width=100% style="border-collapse: collapse"><tr>';
+									$fileContent .=
+											'<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+													<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+													<html>
+															<head>
+																	<meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+																	<style id="Classeur1_16681_Styles">
+																	</style>
+															</head>
+															<body>
+																	<div id="Classeur1_16681" align=center x:publishsource="Excel">
+																			<table x:str border=0 cellpadding=0 cellspacing=0 width=100% style="border-collapse: collapse"><tr>';
 
-										foreach ($colTitles as $title){
-												$fileContent .= '<td class=xl2216681 nowrap>'.$title.'</td>';
-										}
-										$fileContent .= '</tr>';
-										foreach ($studentList as $student){
-												$fileContent .= '<tr><td class=xl2216681 nowrap>'.implode('</td><td class=xl2216681 nowrap>', array_values($student)).'</td></tr>';
-										}
-										$fileContent .= '</table></div></body></html>';
-										$export_type = 'xls';
+									foreach ($colTitles as $title){
+											$fileContent .= '<td class=xl2216681 nowrap>'.$title.'</td>';
+									}
+									$fileContent .= '</tr>';
+									foreach ($studentList as $student){
+											$fileContent .= '<tr><td class=xl2216681 nowrap>'.implode('</td><td class=xl2216681 nowrap>', array_values($student)).'</td></tr>';
+									}
+									$fileContent .= '</table></div></body></html>';
+									$export_type = 'xls';
 								}
 
 								$error = '<span style="color: red; font-weight: bold; font-size: 14px;">';
@@ -570,11 +573,11 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
 								unlink($targedDirName.$targedFileName);
 								$tmpfileName = t3lib_div::tempnam('students');
 								if(!t3lib_div::writeFile($tmpfileName,$fileContent)){
-										$error .= 'Fehler beim Schreiben:<br />';
-										$error .= 'tmpDirName: '.$tmpDirName.'<br />';
-										$error .= 'tmpfileName: '.$tmpfileName.'<br />';
-										$error .= '</span>';
-										return $error;
+									$error .= 'Fehler beim Schreiben:<br />';
+									$error .= 'tmpDirName: '.$tmpDirName.'<br />';
+									$error .= 'tmpfileName: '.$tmpfileName.'<br />';
+									$error .= '</span>';
+									return $error;
 								}
 								t3lib_div::upload_copy_move($tmpfileName,$targedDirName.$targedFileName);
 								t3lib_div::unlink_tempfile($tmpfileName);
@@ -596,224 +599,62 @@ class  tx_uniseminars_module1 extends t3lib_SCbase {
 	private function showLog(){
 		$this->content.='Dies ist ein Test.';
 		$this->content.=t3lib_div::view_array($this->MOD_SETTINGS);
-		/*
-		global $BE_USER,$LANG,$BACK_PATH,$TCA_DESCR,$TCA,$CLIENT,$TYPO3_CONF_VARS;
-		// Action (type):
-		$where_part='';
-		if ($this->MOD_SETTINGS['action'] > 0)	{
-			$where_part.=' AND type='.intval($this->MOD_SETTINGS['action']);
-		} elseif ($this->MOD_SETTINGS['action'] == -1)	{
-			$where_part.=' AND error';
-		}
-
-
-		$starttime=0;
-		$endtime=time();
-
-		// Time:
-		switch($this->MOD_SETTINGS['time'])		{
-			case 0:
-				// This week
-				$week = (date('w') ? date('w') : 7)-1;
-				$starttime = mktime (0,0,0)-$week*3600*24;
-			break;
-			case 1:
-				// Last week
-				$week = (date('w') ? date('w') : 7)-1;
-				$starttime = mktime (0,0,0)-($week+7)*3600*24;
-				$endtime = mktime (0,0,0)-$week*3600*24;
-			break;
-			case 2:
-				// Last 7 days
-				$starttime = mktime (0,0,0)-7*3600*24;
-			break;
-			case 10:
-				// This month
-				$starttime = mktime (0,0,0, date('m'),1);
-			break;
-			case 11:
-				// Last month
-				$starttime = mktime (0,0,0, date('m')-1,1);
-				$endtime = mktime (0,0,0, date('m'),1);
-			break;
-			case 12:
-				// Last 31 days
-				$starttime = mktime (0,0,0)-31*3600*24;
-			break;
-		}
-		if ($starttime)	{
-			$where_part.=' AND tstamp>='.$starttime.' AND tstamp<'.$endtime;
-		}
-
-
-			// Users
-		if ($this->MOD_SETTINGS['users'] > 0)	{	// All users
-			$this->be_user_Array = t3lib_BEfunc::blindUserNames($this->be_user_Array,array($this->MOD_SETTINGS['users']),1);
-			if (is_array($this->be_user_Array))	{
-				while(list(,$val)=each($this->be_user_Array))	{
-					if ($val['uid']!=$BE_USER->user['uid'])	{
-						$selectUsers[]=$val['uid'];
-					}
-				}
-			}
-			$selectUsers[] = 0;
-			$where_part.=' AND userid in ('.implode($selectUsers,',').')';
-		} elseif ($this->MOD_SETTINGS['users']==-1) {
-			$where_part.=' AND userid='.$BE_USER->user['uid'];	// Self user
-		}
-
-		if ($GLOBALS['BE_USER']->workspace!==0)	{
-			$where_part.=' AND workspace='.intval($GLOBALS['BE_USER']->workspace);
-		}
-
-
-
-
-		$log = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', 'sys_log', '1=1'.$where_part, '', 'uid DESC', intval($this->MOD_SETTINGS['max']));
-
-		while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($log))	{
-			$header=$this->doc->formatTime($row['tstamp'],10);
-			if (!$oldHeader)	$oldHeader=$header;
-
-			if ($header!=$oldHeader)	{
-				$this->content.=$this->doc->spacer(10);
-				$this->content.=$this->doc->section($oldHeader,$this->doc->table($codeArr));
-				$codeArr=$this->lF->initArray();
-				$oldHeader=$header;
-				$this->lF->reset();
-			}
-
-			$i++;
-			$codeArr[$i][]=$this->lF->getTimeLabel($row['tstamp']);
-			$codeArr[$i][]=$this->lF->getUserLabel($row['userid'],$row['workspace']);
-			$codeArr[$i][]=$this->lF->getTypeLabel($row['type']);
-			$codeArr[$i][]=$row['error'] ? $this->lF->getErrorFormatting($this->lF->errorSign[$row['error']],$row['error']) : '';
-			$codeArr[$i][]=$this->lF->getActionLabel($row['type'].'_'.$row['action']);
-			$codeArr[$i][]=$this->lF->formatDetailsForList($row);
-		}
-		$this->content.=$this->doc->spacer(10);
-		$this->content.=$this->doc->section($header,$this->doc->table($codeArr));
-
-		$GLOBALS['TYPO3_DB']->sql_free_result($log);
-
-		 */
 	}
 
 
-		/**
-		 * Main function of the module. Write the content to $this->content
-		 * If you chose "web" as main module, you will need to consider the $this->id parameter which will contain the uid-number of the page clicked in the page tree
-		 *
-		 * @return	[type]		...
-		 */
-		/*
-		function main()	{
-			global $BE_USER,$LANG,$BACK_PATH,$TCA_DESCR,$TCA,$CLIENT,$TYPO3_CONF_VARS;
 
-			// Access check!
-			// The page will show only if there is a valid page and if this page may be viewed by the user
-			$this->pageinfo = t3lib_BEfunc::readPageAccess($this->id,$this->perms_clause);
-			$access = is_array($this->pageinfo) ? 1 : 0;
 
-				// initialize doc
-			$this->doc = t3lib_div::makeInstance('template');
-			$this->doc->setModuleTemplate(t3lib_extMgm::extPath('uniseminars') . 'mod1//mod_template.html');
-			$this->doc->backPath = $BACK_PATH;
-			$docHeaderButtons = $this->getButtons();
+	/**
+	* Prints out the module HTML
+	*
+	* @return	void
+	*/
+	function printContent()	{
+		$this->content.=$this->doc->endPage();
+		echo $this->content;
+	}
 
-			if (($this->id && $access) || ($BE_USER->user['admin'] && !$this->id))	{
 
-					// Draw the form
-				$this->doc->form = '<form action="" method="post" enctype="multipart/form-data">';
 
-					// JavaScript
-				$this->doc->JScode = '
-					<script language="javascript" type="text/javascript">
-						script_ended = 0;
-						function jumpToUrl(URL)	{
-							document.location = URL;
-						}
-					</script>
-				';
-				$this->doc->postCode='
-					<script language="javascript" type="text/javascript">
-						script_ended = 1;
-						if (top.fsMod) top.fsMod.recentIds["web"] = 0;
-					</script>
-				';
-					// Render content:
-				$this->moduleContent();
-			} else {
-					// If no access or if ID == zero
-				$docHeaderButtons['save'] = '';
-				$this->content.=$this->doc->spacer(10);
-			}
-
-				// compile document
-			$markers['FUNC_MENU'] = t3lib_BEfunc::getFuncMenu(0, 'SET[function]', $this->MOD_SETTINGS['function'], $this->MOD_MENU['function']);
-			$markers['CONTENT'] = $this->content;
-
-					// Build the <body> for the module
-			$this->content = $this->doc->startPage($LANG->getLL('title'));
-			$this->content.= $this->doc->moduleBody($this->pageinfo, $docHeaderButtons, $markers);
-			$this->content.= $this->doc->endPage();
-			$this->content = $this->doc->insertStylesAndJS($this->content);
-
+	
+	protected function getGuestType($guestType){
+		if($guestType == 0){
+				return 'Guest';
+		}else{
+				return 'Student';
 		}
-		 * */
-
-
-		/**
-		* Prints out the module HTML
-		*
-		* @return	void
-		*/
-		function printContent()	{
-				$this->content.=$this->doc->endPage();
-				echo $this->content;
-		}
-
-
-
-		
-		protected function getGuestType($guestType){
-				if($guestType == 0){
-						return 'Guest';
-				}else{
-						return 'Student';
-				}
-		}
+	}
 
 
 
 				
 
-		/**
-		 * Create the panel of buttons for submitting the form or otherwise perform operations.
-		 *
-		 * @return	array	all available buttons as an assoc. array
-		 */
-		protected function getButtons()	{
+	/**
+	 * Create the panel of buttons for submitting the form or otherwise perform operations.
+	 *
+	 * @return	array	all available buttons as an assoc. array
+	 */
+	protected function getButtons()	{
 
-			$buttons = array(
-				'csh' => '',
-				'shortcut' => '',
-				'save' => ''
-			);
-				// CSH
-			$buttons['csh'] = t3lib_BEfunc::cshItem('_MOD_web_func', '', $GLOBALS['BACK_PATH']);
+		$buttons = array(
+			'csh' => '',
+			'shortcut' => '',
+			'save' => ''
+		);
+			// CSH
+		$buttons['csh'] = t3lib_BEfunc::cshItem('_MOD_web_func', '', $GLOBALS['BACK_PATH']);
 
-				// SAVE button
-			$buttons['save'] = '<input type="image" class="c-inputButton" name="submit" value="Update"' . t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], 'gfx/savedok.gif', '') . ' title="' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.php:rm.saveDoc', 1) . '" />';
+			// SAVE button
+		$buttons['save'] = '<input type="image" class="c-inputButton" name="submit" value="Update"' . t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], 'gfx/savedok.gif', '') . ' title="' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.php:rm.saveDoc', 1) . '" />';
 
 
-				// Shortcut
-			if ($GLOBALS['BE_USER']->mayMakeShortcut())	{
-				$buttons['shortcut'] = $this->doc->makeShortcutIcon('', 'function', $this->MCONF['name']);
-			}
-
-			return $buttons;
+			// Shortcut
+		if ($GLOBALS['BE_USER']->mayMakeShortcut())	{
+			$buttons['shortcut'] = $this->doc->makeShortcutIcon('', 'function', $this->MCONF['name']);
 		}
+
+		return $buttons;
+	}
 				
 }
 
